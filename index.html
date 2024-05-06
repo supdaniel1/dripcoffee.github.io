@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drip Coffee POS</title>
+    <title>Drip Coffee - POS System</title>
     <style>
-        /* Earthy color palette */
+        /* Minimalist and earthy color palette */
         :root {
             --primary-color: #8c6e54; /* Brown */
             --secondary-color: #c9b79c; /* Beige */
@@ -19,7 +19,7 @@
             background-color: var(--secondary-color);
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
@@ -57,55 +57,117 @@
             font-weight: bold;
             color: var(--primary-color);
         }
-        .form-group {
-            margin-top: 20px;
-        }
-        input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Drip Coffee POS</h1>
-        
-        <button onclick="toggleMenu()">Show Menu</button>
-        
-        <div id="menu" style="display: none;">
-            <h2>Menu</h2>
-            <ul>
-                <li><button onclick="addItem('Americano', 80)">Americano - ₱80.00</button></li>
-                <li><button onclick="addItem('Americano Vanilla Cold Foam', 100)">Americano Vanilla Cold Foam - ₱100.00</button></li>
-                <!-- Add more menu items -->
-            </ul>
-        </div>
-        
-        <h2>Order</h2>
-        <ul id="order-list"></ul>
-        
-        <p class="total">Total: ₱<span id="total">0.00</span></p>
-        
-        <button onclick="modifyOrder()">Modify Order</button>
-        <button onclick="processPayment()">Process Payment</button>
+        <div id="login-page">
+            <h1>Drip Coffee - Login</h1>
+            <form id="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
 
-        <div id="payment-form" style="display: none;">
-            <div class="form-group">
-                <label for="payment">Total Payment:</label>
-                <input type="number" id="payment" name="payment" step="0.01">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <input type="submit" value="Login">
+            </form>
+            <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        </div>
+
+        <div id="pos-system" style="display: none;">
+            <h1>Drip Coffee - POS System</h1>
+            
+            <div id="menu">
+                <h2>Menu</h2>
+                <ul>
+                    <li><button onclick="addItem('Americano', 80)">Americano - ₱80.00</button></li>
+                    <li><button onclick="addItem('Americano Vanilla Cold Foam', 100)">Americano Vanilla Cold Foam - ₱100.00</button></li>
+                    <li><button onclick="addItem('Spanish Latte', 110)">Spanish Latte - ₱110.00</button></li>
+                    <li><button onclick="addItem('French Vanilla', 100)">French Vanilla - ₱100.00</button></li>
+                    <li><button onclick="addItem('Salted Caramel', 110)">Salted Caramel - ₱110.00</button></li>
+                    <li><button onclick="addItem('Cafe Latte', 100)">Cafe Latte - ₱100.00</button></li>
+                    <li><button onclick="addItem('Mocha Latte', 110)">Mocha Latte - ₱110.00</button></li>
+                    <li><button onclick="addItem('Dirty Matcha', 120)">Dirty Matcha - ₱120.00</button></li>
+                    <li><button onclick="addItem('Caramel Macchiato', 120)">Caramel Macchiato - ₱120.00</button></li>
+                    <li><button onclick="addItem('Strawberry Latte', 100)">Strawberry Latte - ₱100.00</button></li>
+                    <li><button onclick="addItem('Long Black', 80)">Long Black - ₱80.00</button></li>
+                    <li><button onclick="addItem('Iced White Chocolate Mocha', 110)">Iced White Chocolate Mocha - ₱110.00</button></li>
+                    <li><button onclick="addItem('Matcha Latte', 100)">Matcha Latte - ₱100.00</button></li>
+                    <li><button onclick="addItem('Strawberry Matcha Latte', 120)">Strawberry Matcha Latte - ₱120.00</button></li>
+                    <li><button onclick="addItem('Strawberry Milk', 100)">Strawberry Milk - ₱100.00</button></li>
+                    <li><button onclick="addItem('Milky Chocolate', 100)">Milky Chocolate - ₱100.00</button></li>
+                    <li><button onclick="addItem('Cookies and Cream', 100)">Cookies and Cream - ₱100.00</button></li>
+                </ul>
             </div>
-            <button onclick="calculateChange()">Calculate Change</button>
-            <p id="change"></p>
+            
+            <h2>Order</h2>
+            <ul id="order-list"></ul>
+            
+            <p class="total">Total: ₱<span id="total">0.00</span></p>
+            
+            <button onclick="processPayment()">Process Payment</button>
+
+            <div id="payment-form" style="display: none;">
+                <div class="form-group">
+                    <label for="payment">Total Payment:</label>
+                    <input type="number" id="payment" name="payment" step="0.01">
+                </div>
+                <button onclick="calculateChange()">Calculate Change</button>
+                <p id="change"></p>
+            </div>
+        </div>
+
+        <div id="sales-data" style="display: none;">
+            <h1>Drip Coffee - Sales Data</h1>
+            <div id="sales-chart">
+                <!-- Sales chart will be displayed here -->
+            </div>
+            <div id="sales-table">
+                <!-- Sales data table will be displayed here -->
+            </div>
+        </div>
+
+        <div id="inventory-management" style="display: none;">
+            <h1>Drip Coffee - Inventory Management</h1>
+            <form id="inventory-form">
+                <label for="item-name">Item Name:</label>
+                <input type="text" id="item-name" name="item-name" required>
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" required>
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+
+                <button type="submit">Add Item</button>
+            </form>
+            <div id="inventory-list">
+                <!-- Inventory list will be displayed here -->
+            </div>
+            <p>Total Inventory Cost: ₱<span id="total-cost">0.00</span></p>
         </div>
     </div>
 
     <script>
+        // JavaScript code for handling the functionalities
+
+        // Login functionality
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            // Perform authentication
+            // For demo purposes, let's assume the login is successful
+            showPOS();
+        });
+
+        function showPOS() {
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('pos-system').style.display = 'block';
+        }
+
+        // POS System functionality
         let order = [];
 
         function addItem(item, price) {
@@ -129,13 +191,6 @@
             document.getElementById('total').textContent = total.toFixed(2);
         }
 
-        function modifyOrder() {
-            order = []; // Clear current order
-            displayOrder();
-            calculateTotal();
-            toggleMenu(); // Show menu to add new items
-        }
-
         function processPayment() {
             const total = order.reduce((acc, item) => acc + item.price, 0);
             document.getElementById('payment-form').style.display = 'block';
@@ -153,10 +208,11 @@
             }
         }
 
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
+        // Sales Data functionality
+        // Add JavaScript code for displaying sales data and creating the graph here
+
+        // Inventory Management functionality
+        // Add JavaScript code for managing inventory items and calculating total cost here
     </script>
 </body>
 </html>
