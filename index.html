@@ -3,74 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Shop POS</title>
+    <title>Drip Coffee POS</title>
     <style>
-        /* Some basic styling for demonstration purposes */
+        /* Minimalist styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #f7f7f7;
         }
-        #menu-list {
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
             list-style-type: none;
             padding: 0;
         }
-        #menu-list li {
-            margin-bottom: 5px;
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        #order-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        #order-list li {
-            margin-bottom: 5px;
+        .total {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Coffee Shop POS</h1>
-    
-    <button onclick="showMenu()">Show Menu</button>
-    
-    <div id="menu" style="display: none;">
-        <h2>Menu</h2>
-        <ul id="menu-list">
-            <li><button onclick="addItem('Americano', 80)">Americano - ₱80.00</button></li>
-            <li><button onclick="addItem('Americano Vanilla Cold Foam', 100)">Americano Vanilla Cold Foam - ₱100.00</button></li>
-            <li><button onclick="addItem('Spanish Latte', 110)">Spanish Latte - ₱110.00</button></li>
-            <li><button onclick="addItem('French Vanilla', 100)">French Vanilla - ₱100.00</button></li>
-            <li><button onclick="addItem('Salted Caramel', 110)">Salted Caramel - ₱110.00</button></li>
-            <li><button onclick="addItem('Cafe Latte', 100)">Cafe Latte - ₱100.00</button></li>
-            <li><button onclick="addItem('Mocha Latte', 110)">Mocha Latte - ₱110.00</button></li>
-            <li><button onclick="addItem('Dirty Matcha', 120)">Dirty Matcha - ₱120.00</button></li>
-            <li><button onclick="addItem('Caramel Macchiato', 120)">Caramel Macchiato - ₱120.00</button></li>
-            <li><button onclick="addItem('Strawberry Latte', 100)">Strawberry Latte - ₱100.00</button></li>
-            <li><button onclick="addItem('Long Black', 80)">Long Black - ₱80.00</button></li>
-            <li><button onclick="addItem('Iced White Chocolate Mocha', 110)">Iced White Chocolate Mocha - ₱110.00</button></li>
-            <li><button onclick="addItem('Matcha Latte', 100)">Matcha Latte - ₱100.00</button></li>
-            <li><button onclick="addItem('Strawberry Matcha Latte', 120)">Strawberry Matcha Latte - ₱120.00</button></li>
-            <li><button onclick="addItem('Strawberry Milk', 100)">Strawberry Milk - ₱100.00</button></li>
-            <li><button onclick="addItem('Milky Chocolate', 100)">Milky Chocolate - ₱100.00</button></li>
-            <li><button onclick="addItem('Cookies and Cream', 100)">Cookies and Cream - ₱100.00</button></li>
-        </ul>
+    <div class="container">
+        <h1>Drip Coffee POS</h1>
+        
+        <button onclick="toggleMenu()">Show Menu</button>
+        
+        <div id="menu" style="display: none;">
+            <h2>Menu</h2>
+            <ul>
+                <li><button onclick="addItem('Americano', 80)">Americano - ₱80.00</button></li>
+                <li><button onclick="addItem('Americano Vanilla Cold Foam', 100)">Americano Vanilla Cold Foam - ₱100.00</button></li>
+                <li><button onclick="addItem('Spanish Latte', 110)">Spanish Latte - ₱110.00</button></li>
+                <li><button onclick="addItem('French Vanilla', 100)">French Vanilla - ₱100.00</button></li>
+                <li><button onclick="addItem('Salted Caramel', 110)">Salted Caramel - ₱110.00</button></li>
+                <li><button onclick="addItem('Cafe Latte', 100)">Cafe Latte - ₱100.00</button></li>
+                <li><button onclick="addItem('Mocha Latte', 110)">Mocha Latte - ₱110.00</button></li>
+                <li><button onclick="addItem('Dirty Matcha', 120)">Dirty Matcha - ₱120.00</button></li>
+                <li><button onclick="addItem('Caramel Macchiato', 120)">Caramel Macchiato - ₱120.00</button></li>
+                <li><button onclick="addItem('Strawberry Latte', 100)">Strawberry Latte - ₱100.00</button></li>
+                <li><button onclick="addItem('Long Black', 80)">Long Black - ₱80.00</button></li>
+                <li><button onclick="addItem('Iced White Chocolate Mocha', 110)">Iced White Chocolate Mocha - ₱110.00</button></li>
+                <li><button onclick="addItem('Matcha Latte', 100)">Matcha Latte - ₱100.00</button></li>
+                <li><button onclick="addItem('Strawberry Matcha Latte', 120)">Strawberry Matcha Latte - ₱120.00</button></li>
+                <li><button onclick="addItem('Strawberry Milk', 100)">Strawberry Milk - ₱100.00</button></li>
+                <li><button onclick="addItem('Milky Chocolate', 100)">Milky Chocolate - ₱100.00</button></li>
+                <li><button onclick="addItem('Cookies and Cream', 100)">Cookies and Cream - ₱100.00</button></li>
+            </ul>
+        </div>
+        
+        <h2>Order</h2>
+        <ul id="order-list"></ul>
+        
+        <p class="total">Total: ₱<span id="total">0.00</span></p>
+        
+        <button onclick="processPayment()">Process Payment</button>
     </div>
-    
-    <h2>Order</h2>
-    <ul id="order-list"></ul>
-    
-    <p>Total: ₱<span id="total">0.00</span></p>
-    
-    <button onclick="processPayment()">Process Payment</button>
-    
+
     <script>
         let order = [];
-        
+
         function addItem(item, price) {
             order.push({ item: item, price: price });
             displayOrder();
             calculateTotal();
         }
-        
+
         function displayOrder() {
             const orderList = document.getElementById('order-list');
             orderList.innerHTML = '';
@@ -80,25 +106,23 @@
                 orderList.appendChild(li);
             });
         }
-        
+
         function calculateTotal() {
             const total = order.reduce((acc, item) => acc + item.price, 0);
             document.getElementById('total').textContent = total.toFixed(2);
         }
-        
+
         function processPayment() {
             const total = order.reduce((acc, item) => acc + item.price, 0);
-            // Here you can implement payment processing logic, e.g., displaying a confirmation message.
             alert(`Total amount: ₱${total.toFixed(2)}. Payment processed successfully!`);
-            // Clear the order after processing payment
             order = [];
             displayOrder();
             calculateTotal();
         }
-        
-        function showMenu() {
+
+        function toggleMenu() {
             const menu = document.getElementById('menu');
-            menu.style.display = 'block';
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
         }
     </script>
 </body>
